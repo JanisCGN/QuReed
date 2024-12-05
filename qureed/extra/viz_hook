@@ -1,3 +1,10 @@
-import numpy as np
+"""
+This module implements helpers for visualization of states during simulation
+"""
+
+
+
+def viz_hook():
+
 
   
