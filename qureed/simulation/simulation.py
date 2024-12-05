@@ -18,6 +18,7 @@ from qureed.experiment.experiment_manager import Experiment
 from qureed.extra import Loggers, get_custom_logger
 from qureed.signals.generic_bool_signal import GenericBoolSignal
 from qureed.signals.generic_quantum_signal import GenericQuantumSignal
+from qureed.extra import viz_hook
 
 if TYPE_CHECKING:
     from qureed.devices import GenericDevice
@@ -179,6 +180,8 @@ class Simulation:
             # remove from the event map
             self.current_time = event.event_time
             key = (self.current_time, event.device)
+            # grab state information for visualization here
+            viz_hook(event)
             if key in self.event_map:
                 del self.event_map[key]
 
